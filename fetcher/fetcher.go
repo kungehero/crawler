@@ -8,14 +8,13 @@ import (
 	"golang.org/x/text/transform"
 )
 
-func FetchUrlData(url string) []byte {
+func FetchUrlData(url string) ([]byte, error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		panic("网络连接失败！")
 	}
 	defer resp.Body.Close()
-
 	utf8 := transform.NewReader(resp.Body, simplifiedchinese.GBK.NewDecoder())
 	all, _ := ioutil.ReadAll(utf8)
-	return all
+	return all, nil
 }

@@ -2,6 +2,7 @@ package model
 
 //详细信息
 type Details struct {
+	//Id            string
 	Name          string
 	Age           string
 	Sex           string

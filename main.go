@@ -1,9 +1,13 @@
 package main
 
 import (
-	"fmt"
+	"crawler-go/engine"
+	"crawler-go/friendswebsite/parser"
 )
 
 func main() {
-	fmt.Println()
+	e := engine.ConcurrentRead{}
+	e.Run(engine.Request{Url: `http://www.zhenai.com/jiaoyou`, ParserFunc: parser.ParserCityUrl})
+
+	//e.Run(engine.Request{Url: `http://www.zhenai.com/jiaoyou`, ParserFunc: parser.ParserProfileMessage})
 }
